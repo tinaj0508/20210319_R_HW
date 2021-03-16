@@ -1,0 +1,94 @@
+---
+title: "20210319_R_hw"
+output: html_document
+---
+## 1. 使用orange資料，把Tree變數換成A, B, C, D, E，然後顯示每一個類型的數量。 
+```{r}
+Orange = gsub(1,'A',Orange$Tree)
+Orange = gsub(2,'B',Orange)
+Orange = gsub(3,'C',Orange)
+Orange = gsub(4,'D',Orange)
+Orange = gsub(5,'E',Orange)
+print(Orange)
+print(table(Orange))
+```
+## 2. 請用weekdays()指令顯示今天上課日期是星期二。
+
+```{r}
+library(lubridate)
+date <- ymd("2021-03-16")
+weekdays(date)
+```
+
+
+## 3. 請問在mtcars資料裡面，wt大於或等於2的資料有幾筆？
+###### TRUE=28為答案
+```{r}
+table(mtcars$wt>=2)
+```
+
+## 4. 請嘗試建立一個包含流水號序號、一個數字變數、一個類別變數的資料框或資料表。
+
+```{r}
+fuck <-  c(1:50)
+you <- state.abb
+asshole <- state.area
+USAdataframe<-data.frame(Num=fuck,StateName=you,area=asshole, 
+                 stringsAsFactors = FALSE)
+USAdataframe
+```
+
+## 5. 請創造一個對角向量為{0,0,0}的矩陣。
+
+```{r}
+w <- diag(c(0,0,0))
+w
+cat("---------------------\n")
+diag(w)
+```
+
+## 6. 請用data.table計算Titanic男性與女性生還的人數。
+```{r}
+library(titanic)
+T4<-Titanic[, , 2, 2]
+T4
+```
+
+
+## 7. 請問faithful這筆資料有多少個觀察值？
+
+```{r}
+library(data.table)
+library(dplyr)
+sum1 = summarise(faithful,N_erptions=n())
+sum2 = summarise(faithful,N_waiting=n())
+finalSum = sum1+sum2
+finalSum$N_erptions
+```
+## 8. 請建立三個3×2的陣列。
+
+```{r}
+Array1 <- array(1:6, dim = c(2, 3, 1))
+Array1
+```
+
+
+## 9. 請把Arrests資料裡面的employed變數改成0, 1
+
+```{r}
+library(effects)  
+data(Arrests)
+#View(Arrests)
+fuck = gsub('Yes','1',Arrests$employed)
+fuckYou = gsub('No','0',fuck)
+fuckYou
+```
+
+## 10. 請用三種格式表示今天的日期。
+
+```{r}
+as_datetime(Sys.time())
+format(Sys.time(), "%a %b %d %X %Y")
+as_date(Sys.time())
+```
+
